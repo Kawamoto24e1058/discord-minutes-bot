@@ -176,10 +176,12 @@ export async function startBot() {
     });
 
     try {
+        // ログイン試行前にサーバーを起動 (Renderのタイムアウト回避のため)
+        startHealthCheckServer();
+
         console.log('Logging in to Discord...');
         await client.login(currentEnv.DISCORD_TOKEN);
-        // ログイン成功後にヘルスチェックサーバーを起動
-        startHealthCheckServer();
+
         // 自己ピング機能を開始
         startSelfPing();
     } catch (error) {
