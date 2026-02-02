@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: discord-minutes-bot
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_GUILD_ID
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: NOTION_API_KEY
+        sync: false
+      - key: NOTION_DATABASE_ID
+        sync: false
+      - key: RENDER_URL
+        sync: false
+      - key: PORT
+        value: 8080
